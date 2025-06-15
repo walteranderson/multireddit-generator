@@ -19,10 +19,7 @@ export default {
   },
 } satisfies ExportedHandler<Env>;
 
-type PromptAIResponse =
-  [string[], null]
-  | [null, Error]
-async function promptAI(env: Env, prompt: string): Promise<PromptAIResponse> {
+async function promptAI(env: Env, prompt: string): Promise<[string[], null] | [null, Error]> {
   try {
     const res = await env.AI.run("@cf/meta/llama-3.1-8b-instruct", {
       response_format: {
